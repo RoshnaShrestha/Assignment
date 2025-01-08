@@ -69,3 +69,47 @@ print("\nPlayer 2's Hand: ")
 print(player2)
 
 
+from collections import OrderedDict
+
+class GroceryListOrganizer:
+    def __init__(self):
+        self.grocery_list = OrderedDict()
+
+    def add_item(self, item, quantity):
+        if item in self.grocery_list:
+            self.grocery_list[item] += quantity  # If the item already exists, update the quantity
+        else:
+            self.grocery_list[item] = quantity
+
+    def remove_item(self, item):
+        if item in self.grocery_list:
+            del self.grocery_list[item]
+        else:
+            print(f"{item} not found in the list.")
+
+    def update_quantity(self, item, quantity):
+        if item in self.grocery_list:
+            self.grocery_list[item] = quantity
+        else:
+            print(f"{item} not found in the list.")
+
+    def display_list(self):
+        if not self.grocery_list:
+            print("Your grocery list is empty.")
+        else:
+            print("Grocery List:")
+            for item, quantity in self.grocery_list.items():
+                print(f"{item}: {quantity}")
+
+# Example usage:
+grocery_list = GroceryListOrganizer()
+grocery_list.add_item('Apples', 5)
+grocery_list.add_item('Bananas', 2)
+grocery_list.add_item('Carrots', 3)
+grocery_list.update_quantity('Bananas', 4)
+grocery_list.display_list()
+
+grocery_list.remove_item('Carrots')
+grocery_list.display_list()
+
+
